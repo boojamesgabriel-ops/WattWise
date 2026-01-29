@@ -4,12 +4,14 @@ import { Authenticated, Unauthenticated } from 'convex/react'
 import { SignInButton, UserButton } from '@clerk/nextjs'
 import { useQuery } from 'convex/react'
 import { api } from '../convex/_generated/api'
+import SyncUser from '../components/SyncUser'
 
 export default function Home() {
   return (
     <>
       <Authenticated>
         <UserButton />
+        <SyncUser />
         <Content />
       </Authenticated>
       <Unauthenticated>
