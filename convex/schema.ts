@@ -20,7 +20,7 @@ const schema = defineSchema({
   }) 
     .index("by_userId", ["userId"]),
 
-  //NO INPUTS YET  
+  //INPUT FOR BUDGET 
   budgets: defineTable({
     userId: v.id("users"),
     budget: v.number(),
