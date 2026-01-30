@@ -1,7 +1,7 @@
 import { defineSchema, defineTable } from "convex/server";
 import { authTables } from "@convex-dev/auth/server";
 import { v } from "convex/values";
-//NEED TO ADD: budgets, providers, recommendations, alerts
+//NEED TO ADD: recommendations, alerts, connection to gemini
 const schema = defineSchema({
   ...authTables,
 

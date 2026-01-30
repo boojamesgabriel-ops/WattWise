@@ -45,6 +45,7 @@ export const addBudget = mutation({
       selected_provider: args.selected_provider,
       rate_used: args.rate_used,
       time_stamps: args.time_stamps,
+      
     });
   },
 });
