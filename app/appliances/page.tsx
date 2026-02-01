@@ -3,7 +3,11 @@
 import { useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
+<<<<<<< HEAD
 import { applianceList } from '../../lib/appliances'
+=======
+
+>>>>>>> 7ec2956e7ebc9bc2bfceeeca893f02c0f49e07b4
 
 export default function AppliancesPage() {
 
@@ -19,7 +23,24 @@ export default function AppliancesPage() {
   const [quantity, setQuantity] = useState(0)
   const [hoursPerDay, setHoursPerDay] = useState(0)
 
-  
+  const applianceList = [
+  "Air Conditioner",
+  "Electric Fan",
+  "Refrigerator",
+  "Television",
+  "Rice Cooker",
+  "Electric Kettle",
+  "Microwave Oven",
+  "Washing Machine",
+  "Clothes Iron",
+  "Water Heater / Shower",
+  "Laptop / Desktop Computer",
+  "Lighting (Bulbs / LEDs)",
+  "Mobile Phone Charger",
+  "Electric Stove / Induction Cooker",
+  "Other (Custom)"
+  ];
+
   return (
     <div>
       {/* Text boxes */}
