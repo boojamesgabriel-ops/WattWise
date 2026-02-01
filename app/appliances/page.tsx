@@ -3,11 +3,6 @@
 import { useState } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
-<<<<<<< HEAD
-import { applianceList } from '../../lib/appliances'
-=======
-
->>>>>>> 7ec2956e7ebc9bc2bfceeeca893f02c0f49e07b4
 
 export default function AppliancesPage() {
 
