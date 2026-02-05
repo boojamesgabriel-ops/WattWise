@@ -3,6 +3,7 @@ import '../styles/app.css';
 import '../styles/landing.css';
 import Link from 'next/link';
 import { SignInButton } from '@clerk/nextjs';
+import { Zap, TrendingUp, Bell, PieChart, Plug, Lightbulb } from 'lucide-react';
 
 const LandingPage = () => {
   return (
@@ -12,7 +13,7 @@ const LandingPage = () => {
         <div className="container">
           <div className="nav-container">
             <div className="logo">
-              <i className="fas fa-bolt"></i>
+              <Zap className="w-6 h-6" style={{ color: 'var(--primary-green)' }} />
               <span>WattWise</span>
             </div>
             <div className="nav-links">
@@ -51,11 +52,11 @@ const LandingPage = () => {
             </div>
             <div className="hero-features">
               <div className="feature">
-                <i className="fas fa-chart-line"></i>
+                <TrendingUp className="w-5 h-5" />
                 <span>Real-time Analytics</span>
               </div>
               <div className="feature">
-                <i className="fas fa-crystal-ball"></i>
+                <Lightbulb className="w-5 h-5" />
                 <span>Cost Predictions</span>
               </div>
             </div>
@@ -94,7 +95,7 @@ const LandingPage = () => {
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon">
-                <i className="fas fa-plug"></i>
+                <Plug className="w-8 h-8" />
               </div>
               <h3>Appliance Tracking</h3>
               <p>
@@ -105,7 +106,7 @@ const LandingPage = () => {
 
             <div className="feature-card">
               <div className="feature-icon">
-                <i className="fas fa-bell"></i>
+                <Bell className="w-8 h-8" />
               </div>
               <h3>Budget Alerts</h3>
               <p>
@@ -116,7 +117,7 @@ const LandingPage = () => {
 
             <div className="feature-card">
               <div className="feature-icon">
-                <i className="fas fa-chart-pie"></i>
+                <PieChart className="w-8 h-8" />
               </div>
               <h3>Smart Reports</h3>
               <p>
@@ -134,7 +135,7 @@ const LandingPage = () => {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="logo">
-                <i className="fas fa-bolt"></i>
+                <Zap className="w-5 h-5" style={{ color: 'var(--primary-green)' }} />
                 <span>WattWise</span>
               </div>
               <p>Empowering households to smarter energy consumption since 2024.</p>

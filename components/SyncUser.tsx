@@ -15,7 +15,7 @@ export default function SyncUser() {
       clerkId: user.id,
       email: user.primaryEmailAddress?.emailAddress ?? '',
     }).catch(() => {})
-  }, [user?.id])
+  }, [user, storeUser])
 
   return null
 }

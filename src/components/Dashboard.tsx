@@ -3,8 +3,14 @@ import '../styles/app.css';
 import { useRouter } from 'next/navigation';
 import { useClerk, UserButton } from '@clerk/nextjs';
 import ApplianceManager from './ApplianceManager';
+import { Zap, AlertTriangle, LogOut, TrendingUp, DollarSign, Calendar } from 'lucide-react';
 
-const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppliances }) => {
+const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppliances }: {
+  appliances: any[];
+  onAddAppliance: (appliance: any) => void;
+  onRemoveAppliance: (id: string) => void;
+  onClearAppliances: () => void;
+}) => {
   const router = useRouter();
   const { signOut, user } = useClerk();
   const [budget, setBudget] = useState(200);
@@ -12,8 +18,8 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
 
   // Calculate stats DYNAMICALLY from appliances
   const stats = useMemo(() => {
-    const totalUsage = appliances.reduce((sum, a) => sum + a.usage, 0);
-    const currentCost = appliances.reduce((sum, a) => sum + parseFloat(a.cost), 0);
+    const totalUsage = appliances.reduce((sum: number, a: any) => sum + a.usage, 0);
+    const currentCost = appliances.reduce((sum: number, a: any) => sum + parseFloat(a.cost), 0);
     const predictedTotal = Math.round(totalUsage * 1.1); // 10% increase prediction
     const daysRemaining = 5;
     
@@ -38,7 +44,7 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
   // Generate daily usage data based on appliances
   const dailyUsage = useMemo(() => {
     // Calculate total daily usage in kWh: (watts * hours) / 1000
-    const baseUsage = appliances.reduce((sum, a) => sum + (a.watts * a.hoursPerDay), 0) / 1000;
+    const baseUsage = appliances.reduce((sum: number, a: any) => sum + (a.watts * a.hoursPerDay), 0) / 1000;
     const days = ['Jan 1', 'Jan 3', 'Jan 5', 'Jan 7', 'Jan 9', 'Jan 11', 'Jan 13', 'Jan 15', 
                  'Jan 17', 'Jan 19', 'Jan 21', 'Jan 23', 'Jan 25', 'Jan 27', 'Jan 29', 'Jan 31'];
     
@@ -84,7 +90,7 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
         <div className="container">
           <div className="header-content">
             <div className="logo">
-              <i className="fas fa-bolt" style={{ color: 'var(--primary-green)' }}></i>
+              <Zap className="w-6 h-6" style={{ color: 'var(--primary-green)' }} />
               <span style={{ color: 'var(--primary-green)' }}>WattWise</span>
             </div>
             <div className="header-actions">
@@ -128,7 +134,7 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
                   <div className="stat-icon" style={{ 
                     background: 'linear-gradient(135deg, var(--primary-green), #00d084)',
                     color: 'white'
-                  }}>⚡</div>
+                  }}><TrendingUp className="w-5 h-5" /></div>
                 </div>
                 <div className="stat-value" style={{ color: 'var(--text-dark)' }}>{stats.totalUsage} kWh</div>
                 <div className="stat-subtext" style={{ color: 'var(--text-gray)' }}>This month (Calculated)</div>
@@ -155,7 +161,7 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
                   <div className="stat-icon" style={{ 
                     background: 'linear-gradient(135deg, var(--primary-green), #00d084)',
                     color: 'white'
-                  }}>💰</div>
+                  }}><DollarSign className="w-5 h-5" /></div>
                 </div>
                 <div className="stat-value" style={{ color: 'var(--text-dark)' }}>${stats.currentCost}</div>
                 <div className="stat-subtext" style={{ color: 'var(--text-gray)' }}>Based on usage</div>
@@ -182,7 +188,7 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
                   <div className="stat-icon" style={{ 
                     background: 'linear-gradient(135deg, var(--primary-green), #00d084)',
                     color: 'white'
-                  }}>📈</div>
+                  }}><TrendingUp className="w-5 h-5" /></div>
                 </div>
                 <div className="stat-value" style={{ color: 'var(--text-dark)' }}>{stats.predictedTotal} kWh</div>
                 <div className="stat-subtext" style={{ color: 'var(--text-gray)' }}>End of month forecast</div>
@@ -209,7 +215,7 @@ const Dashboard = ({ appliances, onAddAppliance, onRemoveAppliance, onClearAppli
                   <div className="stat-icon" style={{ 
                     background: 'linear-gradient(135deg, var(--primary-green), #00d084)',
                     color: 'white'
-                  }}>📅</div>
+                  }}><Calendar className="w-5 h-5" /></div>
                 </div>
                 <div className="stat-value" style={{ color: 'var(--text-dark)' }}>{stats.daysRemaining}</div>
                 <div className="stat-subtext" style={{ color: 'var(--text-gray)' }}>Until end of month</div>
