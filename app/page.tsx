@@ -1,41 +1,40 @@
 'use client'
 
 import { Authenticated, Unauthenticated } from 'convex/react'
-import { SignInButton, UserButton } from '@clerk/nextjs'
-import SyncUser from '../components/SyncUser'
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+import SyncUser from '@/components/SyncUser'
 import AppliancesPage from './appliances/page'
 import BudgetsPage from './budgets/page'
+import LandingPage from "@/src/components/LandingPage"
 
 export default function Home() {
+  const { isSignedIn } = useUser()
+  const router = useRouter()
+
+  // Redirect to dashboard when logged in
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push('/dashboard')
+    }
+  }, [isSignedIn, router])
+
   return (
     <>
       <Authenticated>
-        <UserButton />
+        {/* User will be redirected, but show briefly */}
+        <div className="p-4">
+          <UserButton />
+        </div>
         <SyncUser />
-        <Content />
         <AppliancesPage />
         <BudgetsPage />
       </Authenticated>
+      
       <Unauthenticated>
-        <SignInButton />
+        <LandingPage />
       </Unauthenticated>
     </>
   )
 }
-
-function Content() {
-  return (
-    <main className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-4">WattWise</h1>
-      <p className="text-lg text-gray-600">
-        Welcome to your electricity usage dashboard!
-      </p>
-      <p className="mt-4 text-sm text-gray-500">
-        Add appliances to start tracking your power consumption.
-      </p>
-    </main>
-
-  )
-}
-
-
